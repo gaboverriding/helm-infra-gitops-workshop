@@ -34,7 +34,7 @@ spec:
                 oc patch oauth/cluster --type=json -p '[{"op":"add", "path":"/spec", "value":{"identityProviders":[]}}]'
             fi
             oc patch oauth/cluster --type=json -p '[{"op":"add", "path":"/spec/identityProviders/-",
-              "value":{"openID": {"claims": {"preferredUsername": ["preferred_username"], "name": ["name"], "email": ["email"], "groups": ["grups"]},
+              "value":{"openID": {"claims": {"preferredUsername": ["preferred_username"], "name": ["name"], "email": ["email"], "groups": ["groups"]},
               "clientID": {{ $.Values.keycloak.clientid }}, "clientSecret": {"name": {{ $.Values.keycloak.secret }} },
               "ca": {"name": {{ $.Values.keycloak.cm }} }, "issuer": "{{ $.Values.keycloak.issuer }}"},
               "mappingMethod": "claim", "name": "keycloak", "type": "OpenID"}}]'
